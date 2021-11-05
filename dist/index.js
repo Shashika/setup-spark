@@ -50,7 +50,7 @@ try {
     var command = `cd /tmp &&
   wget -q -O spark.tgz ${sparkUrl} &&
   tar xzf spark.tgz -C ${installFolder} &&
-  mv spark-${sparkVersion}-bin-spark-${sparkVersion}-bin-hadoop${hadoopVersion} spark-${sparkVersion}-bin-hadoop${hadoopVersion}
+  mv spark-${sparkVersion}-bin-spark-${sparkVersion}-bin-hadoop${hadoopVersion} spark-${sparkVersion}-bin-hadoop${hadoopVersion} &&
   rm "spark.tgz"
   ln -s "${installFolder}/spark-${sparkVersion}-bin-hadoop${hadoopVersion}" ${installFolder}/spark`;
     // var command = `cd /tmp &&
