@@ -25,7 +25,7 @@ try {
   wget -q -O spark.tgz ${sparkUrl} &&
   tar xzf spark.tgz -C ${installFolder} &&
   rm "spark.tgz"
-  ln -s "${installFolder}/spark-${sparkVersion}-bin-hadoop${hadoopVersion}" ${installFolder}/spark`
+  ln -s "${installFolder}/spark-${sparkVersion}-bin-spark-${sparkVersion}-bin-hadoop${hadoopVersion}" ${installFolder}/spark`
 
   // var command = `cd /tmp &&
   // wget -q $(wget -qO- "https://www.apache.org/dyn/closer.lua/spark/spark-${sparkVersion}/spark-${sparkVersion}-bin-hadoop${hadoopVersion}.tgz?as_json" | python -c "import sys, json; content=json.load(sys.stdin); print(content['preferred']+content['path_info'])") &&
