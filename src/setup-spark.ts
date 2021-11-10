@@ -57,7 +57,7 @@ try {
   exec(`echo "SPARK_OPTS=${SPARK_OPTS}" >> $GITHUB_ENV`, (err, stdout, stderr) => { });
 
   // Add Spark to path
-  exec(`echo "PATH=$PATH:${sparkHome}/bin" >> $GITHUB_ENV`, (err, stdout, stderr) => { });
+  exec(`export PATH=\$PATH:${sparkHome}/bin" | sudo tee -a "$GITHUB_ENV" >/dev/null`, (err, stdout, stderr) => { });
 
   core.setOutput("spark-version", sparkVersion);
 } catch (error) {

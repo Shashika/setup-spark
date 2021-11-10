@@ -50,7 +50,6 @@ try {
     var command = `cd /tmp &&
   wget -q -O spark.tgz ${sparkUrl} &&
   tar xzf spark.tgz -C ${installFolder} &&
-  mv spark-${sparkVersion}-bin-spark-${sparkVersion}-bin-hadoop${hadoopVersion} spark-${sparkVersion}-bin-hadoop${hadoopVersion} &&
   rm "spark.tgz"
   ln -s "${installFolder}/spark-${sparkVersion}-bin-hadoop${hadoopVersion}" ${installFolder}/spark`;
     // var command = `cd /tmp &&
@@ -80,7 +79,7 @@ try {
     child_process_1.exec(`echo "PYTHONPATH=${PYTHONPATH}" >> $GITHUB_ENV`, (err, stdout, stderr) => { });
     child_process_1.exec(`echo "SPARK_OPTS=${SPARK_OPTS}" >> $GITHUB_ENV`, (err, stdout, stderr) => { });
     // Add Spark to path
-    child_process_1.exec(`echo "PATH=$PATH:${sparkHome}/bin" >> $GITHUB_ENV`, (err, stdout, stderr) => { });
+    child_process_1.exec(`export PATH=\$PATH:${sparkHome}/bin" | sudo tee -a "$GITHUB_ENV" >/dev/null`, (err, stdout, stderr) => { });
     core.setOutput("spark-version", sparkVersion);
 }
 catch (error) {
